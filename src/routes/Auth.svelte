@@ -1,15 +1,15 @@
 <script>
   // document.domain = 'localhost:3000'
-  window.onmessage = (e) => {
-    var parent = window.parent
-    let data = {
+  let data = {
       userType: localStorage.getItem("userType"),
       userInfo: localStorage.getItem("userInfo")
-    }
+  }
+  window.onmessage = (e) => {
+    var parent = window.parent
     parent.postMessage(data, "*")
   }
 </script>
 
 <main>
-  hello from auth endpoint
+  {JSON.stringify(data)}
 </main>
