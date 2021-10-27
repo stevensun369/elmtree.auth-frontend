@@ -1,5 +1,5 @@
 <script>
-  document.domain = 'elmtree.io'
+  // document.domain = 'elmtree.io'
   let data = {
       userType: localStorage.getItem("userType"),
       userInfo: localStorage.getItem("userInfo")
