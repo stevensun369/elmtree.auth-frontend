@@ -17,7 +17,7 @@
   async function submit () {
     try {
       const {data} = await axios.post(
-        'http://127.0.0.1:1000/api/parent/login',
+        `${apiURL}/api/parent/login`,
         {cnp: cnp, password},
         config
       )

@@ -2,6 +2,8 @@
 
   import axios from 'axios'
 
+  import {apiURL} from '../apiURL'
+
   let cnp = ''
   let password = ''
 
@@ -17,7 +19,7 @@
   async function submit () {
     try {
       const {data} = await axios.post(
-        'http://127.0.0.1:1000/api/teacher/login',
+        `${apiURL}/api/teacher/login`,
         {cnp: cnp, password},
         config
       )
