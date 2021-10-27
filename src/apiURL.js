@@ -1,4 +1,4 @@
-let env = 'dev'
+let env = 'prod'
 let apiURL = ''
 let teacherURL = ''
 let parentURL = ''
