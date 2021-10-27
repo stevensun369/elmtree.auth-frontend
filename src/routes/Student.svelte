@@ -2,6 +2,8 @@
 
   import axios from 'axios'
 
+  import {apiURL, studentURL} from '../apiURL'
+
   let cnp = ''
   let password = ''
 
@@ -25,7 +27,7 @@
 
       localStorage.setItem('userType', 'student')
       localStorage.setItem('userInfo', JSON.stringify(requestData))
-      window.location.replace('http://localhost:3000/elev')
+      window.location.replace(studentURL)
     } catch (error) {
       requestError = error.response.data.message
       console.log(requestError)

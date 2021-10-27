@@ -2,6 +2,8 @@
 
   import axios from 'axios'
 
+  import {apiURL, parentURL} from '../apiURL' 
+
   let cnp = ''
   let password = ''
 

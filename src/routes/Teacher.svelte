@@ -2,7 +2,7 @@
 
   import axios from 'axios'
 
-  import {apiURL} from '../apiURL'
+  import {apiURL, teacherURL} from '../apiURL'
 
   let cnp = ''
   let password = ''
@@ -27,7 +27,7 @@
 
       localStorage.setItem('userType', 'teacher')
       localStorage.setItem('userInfo', JSON.stringify(requestData))
-      window.location.replace('http://localhost:3000/profesor')
+      window.location.replace(teacherURL)
     } catch (error) {
       requestError = error.response.data.message
       console.log(requestError)
