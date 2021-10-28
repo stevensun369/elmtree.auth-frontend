@@ -27,7 +27,7 @@
 
       localStorage.setItem('userType', 'parent')
       localStorage.setItem('userInfo', JSON.stringify(requestData))
-      window.location.replace('http://localhost:3000/parinte')
+      window.location.replace(parentURL)
     } catch (error) {
       requestError = error.response.data.message
       console.log(requestError)
