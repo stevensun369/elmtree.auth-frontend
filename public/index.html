@@ -23,5 +23,19 @@
     />
   </head>
 
-  <body></body>
+  <body>
+    <script>
+      var viewport = document.querySelector('meta[name=viewport]')
+      viewport.setAttribute(
+        'content',
+        viewport.content + ', height=' + innerHeight
+      )
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+      }
+
+      // document.domain = 'elmtree.io'
+    </script>
+  </body>
 </html>
