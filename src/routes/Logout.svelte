@@ -5,6 +5,6 @@
   onMount(() => {
     localStorage.removeItem("userType")
     localStorage.removeItem("userInfo")
-    push('/welcome')
+    push('/')
   })
 </script>

@@ -1,6 +1,7 @@
 <script>
   import axios from "axios"
-  import {apiURL} from '../apiURL'
+  import getEnv from '../env' 
+  const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
   import {onMount} from 'svelte'
 
   // updating user data

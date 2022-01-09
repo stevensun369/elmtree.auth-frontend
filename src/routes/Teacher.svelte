@@ -2,7 +2,8 @@
 
   import axios from 'axios'
 
-  import {apiURL, teacherURL} from '../apiURL'
+  import getEnv from '../env' 
+  const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
 
   let cnp = ''
   let password = ''
@@ -20,7 +21,7 @@
     try {
       const {data} = await axios.post(
         `${apiURL}/api/teacher/login`,
-        {cnp: cnp, password},
+        {cnp, password},
         config
       )
       requestData = data
@@ -41,7 +42,7 @@
   
 </script>
 
-<a href="#/welcome">
+<a href="/#/">
   <div class="backButton">
     <img src="img/back-button.webp" alt="" class="backButtonImg">
   </div>
@@ -53,47 +54,49 @@
 </div>
 
 <div class="mainCard">
-  <span class="loginInfo">Conectare profesor:</span>
-  <input 
-    type="text" 
-    class="input"
-    placeholder="CNP" 
-    bind:value={cnp} 
-  />
+  <form on:submit|preventDefault={submit}>
+    <span class="loginInfo">Conectare profesor:</span>
+    <input 
+      type="text" 
+      class="input"
+      placeholder="CNP" 
+      bind:value={cnp} 
+    />
 
-  <input 
-    type="password" 
-    class="input"
-    placeholder="Parola" 
-    bind:value={password} 
-  />
+    <input 
+      type="password" 
+      class="input"
+      placeholder="Parola" 
+      bind:value={password} 
+    />
 
-  {#if requestError}
-    <div class="messageContainer" style="margin-top: 2vh">
-      <div class="alert alert-danger">
-        {requestError}
+    {#if requestError}
+      <div class="messageContainer" style="margin-top: 2vh">
+        <div class="alert alert-danger">
+          {requestError}
+        </div>
       </div>
-    </div>
-  {/if}
+    {/if}
 
-  {#if cnp.length > 13}
-    <div class="messageContainer" style="margin-top: 2vh">
-      <div class="alert alert-danger">
-        CNP-ul are prea multe cifre
+    {#if cnp.length > 13}
+      <div class="messageContainer" style="margin-top: 2vh">
+        <div class="alert alert-danger">
+          CNP-ul are prea multe cifre
+        </div>
       </div>
-    </div>
-  {/if}
+    {/if}
 
-  {#if cnp.length < 13 && cnp.length !== 0}
-    <div class="messageContainer" style="margin-top: 2vh">
-      <div class="alert alert-danger">
-        CNP-ul nu are îndeajuns de multe cifre
+    {#if cnp.length < 13 && cnp.length !== 0}
+      <div class="messageContainer" style="margin-top: 2vh">
+        <div class="alert alert-danger">
+          CNP-ul nu are îndeajuns de multe cifre
+        </div>
       </div>
-    </div>
-  {/if}
+    {/if}
 
-    <button class="submitButton" disabled={cnp.length > 13 || cnp.length < 13 } on:click={submit}>Conectare</button>
-</div>
+    <button class="submitButton" disabled={cnp.length > 13 || cnp.length < 13 }>Conectare</button>
+  </form>
+  </div>
 
 <style>
   :root {

@@ -2,7 +2,7 @@
   import {link} from 'svelte-spa-router'
 </script>
 
-<a href="#/welcome">
+<a href="/#/">
   <div class="backButton">
     <img src="img/back-button.webp" alt="" class="backButtonImg">
   </div>
