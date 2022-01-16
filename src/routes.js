@@ -1,4 +1,4 @@
-// import Home from './routes/Home.svelte'
+import Home from './routes/Home.svelte'
 import Welcome from './routes/Welcome.svelte'
 import Teacher from './routes/Teacher.svelte'
 import Student from './routes/Student.svelte'
@@ -10,7 +10,8 @@ import Logout from './routes/Logout.svelte'
 import NotFound from './routes/NotFound.svelte'
 
 export default {
-  '/': Welcome,
+  '/': Home,
+  '/welcome': Welcome,
   '/teacher': Teacher,
   '/student': Student,
   '/parent': ParentWelcome,

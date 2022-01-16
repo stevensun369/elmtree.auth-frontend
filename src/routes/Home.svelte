@@ -1,15 +1,20 @@
 <script>
-	import {onMount} from 'svelte'
+	import getEnv from '../env' 
+	import {push} from 'svelte-spa-router'
+  const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
 
-	// onMount(() => {
-	// 	if (localStorage.getItem('userType')=== 'teacher') {
-	// 		window.location.replace("https://google.com")
-	// 	} else if (localStorage.getItem('userType')=== 'student') {
-	// 		window.location.replace("https://youtube.com")
-	// 	} else if (localStorage.getItem('userType')=== 'parent') {
-	// 		window.location.replace("https://docs.google.com")
-	// 	}
-	// })
+  const userType = localStorage.getItem('userType')
+
+  import {onMount} from 'svelte'
+  onMount(() => {
+    if (userType === 'teacher') {
+      window.location.replace(teacherURL)
+    } else if (userType === 'parent') {
+      window.location.replace(parentURL)
+    } else if (userType === 'studentl') {
+      window.location.replace(studentURL)
+    } else if (userType === null) {
+			push('/welcome')
+		}
+  })
 </script>
-
-<main>hello</main>

@@ -5,21 +5,21 @@
     navigator.userAgent
   )
 
-  import getEnv from '../env' 
-  const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
+  // import getEnv from '../env' 
+  // const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
 
-  const userType = localStorage.getItem('userType')
+  // const userType = localStorage.getItem('userType')
 
-  import {onMount} from 'svelte'
-  onMount(() => {
-    if (userType === 'teacher') {
-      window.location.replace(teacherURL)
-    } else if (userType === 'parent') {
-      window.location.replace(parentURL)
-    } else if (userType === 'studentl') {
-      window.location.replace(studentURL)
-    }
-  })
+  // // import {onMount} from 'svelte'
+  // // onMount(() => {
+  // //   // if (userType === 'teacher') {
+  // //   //   window.location.replace(teacherURL)
+  // //   // } else if (userType === 'parent') {
+  // //   //   window.location.replace(parentURL)
+  // //   // } else if (userType === 'studentl') {
+  // //   //   window.location.replace(studentURL)
+  // //   // }
+  // // })
 </script>
 
 
