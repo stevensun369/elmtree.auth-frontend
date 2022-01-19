@@ -9,11 +9,14 @@
   onMount(() => {
     if (userType === 'teacher') {
       window.location.replace(teacherURL)
-    } else if (userType === 'parent') {
+    } 
+    if (userType === 'parent') {
       window.location.replace(parentURL)
-    } else if (userType === 'studentl') {
+    } 
+    if (userType === 'studentl') {
       window.location.replace(studentURL)
-    } else if (userType === null) {
+    } 
+    if (userType === null) {
 			push('/welcome')
 		}
   })
