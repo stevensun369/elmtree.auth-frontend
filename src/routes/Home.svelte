@@ -13,7 +13,7 @@
     if (userType === 'parent') {
       window.location.replace(parentURL)
     } 
-    if (userType === 'studentl') {
+    if (userType === 'student') {
       window.location.replace(studentURL)
     } 
     if (userType === null) {
