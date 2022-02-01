@@ -5,7 +5,7 @@
   import getEnv from '../env' 
   const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
 
-  let cnp = ''
+  let teacherID = ''
   let password = ''
 
   const config = {
@@ -21,7 +21,7 @@
     try {
       const {data} = await axios.post(
         `${apiURL}/api/teacher/login`,
-        {cnp, password},
+        {teacherID, password},
         config
       )
       requestData = data
@@ -33,13 +33,7 @@
       requestError = error.response.data.message
       console.log(requestError)
     }
-  }
-
-  let buttonDisabled
-  $: {
-    buttonDisabled = cnp.length > 13 || cnp.length < 13
-  }
-  
+  }  
 </script>
 
 <a href="/#/">
@@ -59,8 +53,8 @@
     <input 
       type="text" 
       class="input"
-      placeholder="CNP" 
-      bind:value={cnp} 
+      placeholder="ID-ul de profesor" 
+      bind:value={teacherID} 
     />
 
     <input 
@@ -78,23 +72,7 @@
       </div>
     {/if}
 
-    {#if cnp.length > 13}
-      <div class="messageContainer" style="margin-top: 2vh">
-        <div class="alert alert-danger">
-          CNP-ul are prea multe cifre
-        </div>
-      </div>
-    {/if}
-
-    {#if cnp.length < 13 && cnp.length !== 0}
-      <div class="messageContainer" style="margin-top: 2vh">
-        <div class="alert alert-danger">
-          CNP-ul nu are îndeajuns de multe cifre
-        </div>
-      </div>
-    {/if}
-
-    <button class="submitButton" disabled={cnp.length > 13 || cnp.length < 13 }>Conectare</button>
+    <button class="submitButton">Conectare</button>
   </form>
   </div>
 
@@ -168,7 +146,7 @@
     height: 7vh;
     background: lightgray;
     border: 0;
-    border-radius: 0;
+    border-radius: 12px;
 
     display: block;
     margin: auto;
@@ -187,7 +165,7 @@
   }
 
   .input:focus {
-    border: 1px solid var(--green);
+    border: 2px solid var(--lightgreen);
     outline: none;
   }
 
@@ -198,7 +176,7 @@
   }
 
   .input:active {
-    border: 1px solid var(--green);
+    border: 1px solid var(--lightgreen);
     outline: none;
   }
 

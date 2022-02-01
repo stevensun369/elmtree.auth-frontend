@@ -5,7 +5,7 @@
   import getEnv from '../env' 
   const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
 
-  let cnp = ''
+  let email = ''
   let password = ''
 
   const config = {
@@ -21,7 +21,7 @@
     try {
       const {data} = await axios.post(
         `${apiURL}/api/parent/login`,
-        {cnp: cnp, password},
+        {email, password},
         config
       )
       requestData = data
@@ -34,12 +34,6 @@
       console.log(requestError)
     }
   }
-
-  let buttonDisabled
-  $: {
-    buttonDisabled = cnp.length > 13 || cnp.length < 13
-  }
-  
 </script>
 
 
@@ -61,8 +55,8 @@
     <input 
       type="text" 
       class="input"
-      placeholder="CNP" 
-      bind:value={cnp} 
+      placeholder="Adresa de email" 
+      bind:value={email} 
     />
 
     <input 
@@ -80,23 +74,7 @@
       </div>
     {/if}
 
-    {#if cnp.length > 13}
-      <div class="messageContainer" style="margin-top: 2vh">
-        <div class="alert alert-danger">
-          CNP-ul are prea multe cifre
-        </div>
-      </div>
-    {/if}
-
-    {#if cnp.length < 13 && cnp.length !== 0}
-      <div class="messageContainer" style="margin-top: 2vh">
-        <div class="alert alert-danger">
-          CNP-ul nu are îndeajuns de multe cifre
-        </div>
-      </div>
-    {/if}
-
-    <button class="submitButton" disabled={cnp.length > 13 || cnp.length < 13 } on:click={submit}>Conectare</button>
+    <button class="submitButton" on:click={submit}>Conectare</button>
   </form>
 </div>
 
