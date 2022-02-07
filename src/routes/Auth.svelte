@@ -43,7 +43,7 @@
       config
     )
 
-    ls.students = updartedata.students,
+    ls.students = update.data.students,
     ls.token = update.data.token
   }
   onMount(async () => {

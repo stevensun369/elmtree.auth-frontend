@@ -13,14 +13,14 @@
     </div>
   </div>
   <p class="cardText">
-    Pentru a putea continua ca și părinte, trebuie fie să vă conectați la un
+    Pentru a putea continua ca și profesor, trebuie fie să vă conectați la un
     cont deja existent fie să vă inregistrați cu unul nou.
   </p>
   <div class="buttonContainer">
-    <a href="/#/parent/login" style="text-decoration: none;">
+    <a href="/#/teacher/login" style="text-decoration: none;">
       <div class="button" style="float: left;">Conectare</div>
     </a>
-    <a href="/#/parent/register" style="text-decoration: none;">
+    <a href="/#/teacher/register" style="text-decoration: none;">
       <div class="button" style="float: right;">Înregistrare</div>
     </a>
   </div>

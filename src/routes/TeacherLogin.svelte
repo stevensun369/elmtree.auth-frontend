@@ -5,7 +5,7 @@
   import getEnv from '../env' 
   const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
 
-  let studentID = ''
+  let email = ''
   let password = ''
 
   const config = {
@@ -20,24 +20,23 @@
   async function submit () {
     try {
       const {data} = await axios.post(
-        `${apiURL}/api/student/login`,
-        {studentID, password},
+        `${apiURL}/api/teacher/login`,
+        {email, password},
         config
       )
       requestData = data
 
-      localStorage.setItem('userType', 'student')
+      localStorage.setItem('userType', 'teacher')
       localStorage.setItem('userInfo', JSON.stringify(requestData))
-      window.location.replace(studentURL)
+      window.location.replace(teacherURL)
     } catch (error) {
       requestError = error.response.data.message
       console.log(requestError)
     }
-  }
-  
+  }  
 </script>
 
-<a href="/#/">
+<a href="/#/teacher">
   <div class="backButton">
     <img src="img/back-button.webp" alt="" class="backButtonImg">
   </div>
@@ -50,13 +49,12 @@
 
 <div class="mainCard">
   <form on:submit|preventDefault={submit}>
-    <span class="loginInfo">Conectare elev:</span>
-
+    <span class="loginInfo">Conectare profesor:</span>
     <input 
-      type="text" 
+      type="email" 
       class="input"
-      placeholder="ID-ul de elev" 
-      bind:value={studentID} 
+      placeholder="Email" 
+      bind:value={email} 
     />
 
     <input 
@@ -74,9 +72,9 @@
       </div>
     {/if}
 
-    <button class="submitButton" >Conectare</button>
+    <button class="submitButton">Conectare</button>
   </form>
-</div>
+  </div>
 
 <style>
   :root {
@@ -171,42 +169,41 @@
     outline: none;
   }
 
-  input[type='text'].input:focus::-webkit-inner-spin-button,
-  input[type='text'].input:focus::-webkit-outer-spin-button {
+  input[type='email'].input:focus::-webkit-inner-spin-button,
+  input[type='email'].input:focus::-webkit-outer-spin-button {
     -webkit-appearence: none;
     margin: 0;
   }
 
   .input:active {
-    border: 1px solid var(--green);
     outline: none;
   }
 
-  input[type='text'].input:active::-webkit-inner-spin-button,
-  input[type='text'].input:active::-webkit-outer-spin-button {
+  input[type='email'].input:active::-webkit-inner-spin-button,
+  input[type='email'].input:active::-webkit-outer-spin-button {
     -webkit-appearence: none;
     margin: 0;
   }
 
-  input[type='text'].input::-webkit-inner-spin-button,
-  input[type='text'].input::-webkit-outer-spin-button {
+  input[type='email'].input::-webkit-inner-spin-button,
+  input[type='email'].input::-webkit-outer-spin-button {
     -webkit-appearence: none;
     margin: 0;
   }
 
-  input[type='text'].input {
+  input[type='email'].input {
     appearance: textfield;
     -webkit-appearance: textfield;
     -moz-appearance: textField;
   }
 
-  input[type='text'].input:active {
+  input[type='email'].input:active {
     appearance: textfield;
     -webkit-appearance: textfield;
     -moz-appearance: textField;
   }
 
-  input[type='text'].input:focus {
+  input[type='email'].input:focus {
     appearance: textfield;
     -webkit-appearance: textfield;
     -moz-appearance: textField;

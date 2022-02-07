@@ -6,6 +6,7 @@
   const [apiURL, teacherURL, parentURL, studentURL] = getEnv(production)
 
   let teacherID = ''
+  let email = ''
   let password = ''
 
   const config = {
@@ -20,23 +21,24 @@
   async function submit () {
     try {
       const {data} = await axios.post(
-        `${apiURL}/api/teacher/login`,
-        {teacherID, password},
+        `${apiURL}/api/teacher/register`,
+        {email, teacherID, password},
         config
       )
       requestData = data
 
-      localStorage.setItem('userType', 'teacher')
+      localStorage.setItem('userType', 'student')
       localStorage.setItem('userInfo', JSON.stringify(requestData))
-      window.location.replace(teacherURL)
+      window.location.replace(studentURL)
     } catch (error) {
       requestError = error.response.data.message
       console.log(requestError)
     }
-  }  
+  }
+  
 </script>
 
-<a href="/#/">
+<a href="/#/student">
   <div class="backButton">
     <img src="img/back-button.webp" alt="" class="backButtonImg">
   </div>
@@ -50,11 +52,19 @@
 <div class="mainCard">
   <form on:submit|preventDefault={submit}>
     <span class="loginInfo">Conectare profesor:</span>
+    
     <input 
       type="text" 
       class="input"
       placeholder="ID-ul de profesor" 
       bind:value={teacherID} 
+    />
+
+    <input 
+      type="email" 
+      class="input"
+      placeholder="Email" 
+      bind:value={email} 
     />
 
     <input 
@@ -72,9 +82,9 @@
       </div>
     {/if}
 
-    <button class="submitButton">Conectare</button>
+    <button class="submitButton" >Conectare</button>
   </form>
-  </div>
+</div>
 
 <style>
   :root {
@@ -146,7 +156,7 @@
     height: 7vh;
     background: lightgray;
     border: 0;
-    border-radius: 12px;
+    border-radius: 0;
 
     display: block;
     margin: auto;
@@ -165,7 +175,7 @@
   }
 
   .input:focus {
-    border: 2px solid var(--lightgreen);
+    border: 1px solid var(--green);
     outline: none;
   }
 
@@ -176,7 +186,7 @@
   }
 
   .input:active {
-    border: 1px solid var(--lightgreen);
+    border: 1px solid var(--green);
     outline: none;
   }
 
